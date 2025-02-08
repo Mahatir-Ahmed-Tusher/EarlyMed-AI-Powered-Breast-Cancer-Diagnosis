@@ -1,10 +1,13 @@
+![logo](https://github.com/user-attachments/assets/eedf8d57-ee5b-47d4-acdb-72aa859fcde6)
+
+
 # EarlyMed-AI-Powered-Breast-Cancer-Diagnosis
 
 EarlyMed is a web-based AI-driven tool for breast cancer detection. It analyzes clinically significant cell features to predict whether a sample is **benign (non-cancerous) or malignant (cancerous)**. The model is trained on a well-structured dataset and deployed on **Render** for public access.
 
 ## 🌐 Live Web App
 
-👉 [EarlyMed - Breast Cancer Prediction](https://apx.render.app)
+👉 [EarlyMed - Breast Cancer Prediction](https://earlymed-breast-cancer-diagnosis.onrender.com/)
 
 ---
 
