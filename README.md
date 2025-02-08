@@ -9,6 +9,8 @@ EarlyMed is a web-based AI-driven tool for breast cancer detection. It analyzes 
 
 👉 [EarlyMed - Breast Cancer Prediction](https://earlymed-breast-cancer-diagnosis.onrender.com/)
 
+![image](https://github.com/user-attachments/assets/52742961-317f-4051-b3e4-0a25b098527a)
+
 ---
 
 ## 📌 Project Overview
@@ -56,7 +58,7 @@ The model is built using **Random Forest Classifier (RFC)**, a robust and interp
 
 ## 🚀 Deployment
 The web app is hosted on **Render**, making it accessible from anywhere. Simply visit:
-👉 **[EarlyMed Web App](https://apx.render.app)**
+👉 **[EarlyMed Web App](https://earlymed-breast-cancer-diagnosis.onrender.com/)**
 
 ### How to Use the Web App?
 1. Open the web app.
@@ -65,6 +67,14 @@ The web app is hosted on **Render**, making it accessible from anywhere. Simply 
 4. The AI will classify the sample as **benign** or **malignant** instantly.
 
 ✅ *Note: This tool is for informational purposes only. Always consult a medical professional for a confirmed diagnosis.*
+
+Provide your test results here: 
+![image](https://github.com/user-attachments/assets/929bb5b3-3f14-46d8-8b63-d88b6bc38171)
+
+After providing the information, user will be able to see whether the user's stage is benign or malignent
+
+![image](https://github.com/user-attachments/assets/f6f4e950-7441-4c74-974f-008d45194e01)
+
 
 ---
 
