@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarlyMed- Breast Cancer Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* Light cyan gradient */
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px); /* Glassy effect */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        h1 {
+            color: #00796b; /* Dark teal */
+            margin-bottom: 20px;
+        }
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-box label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #0097a7; /* Teal */
+            margin-bottom: 5px;
+        }
+        input {
+            width: 96.8%;
+            padding: 10px;
+            border: 1px solid #022a2f; /* Light cyan border */
+            border-radius: 10px;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+        }
+        input::placeholder {
+            color: #d67b3f; /* Light cyan placeholder */
+        }
+        .tooltip {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #0097a7; /* Teal */
+        }
+        .tooltip:hover::after {
+            content: attr(data-definition) "\A Normal Range: " attr(data-range);
+            white-space: pre-wrap;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: #00796b; /* Dark teal */
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            min-width: 200px;
+            z-index: 1;
+        }
+        button {
+            background: #ff4081; /* Pink */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #f50057; /* Darker pink on hover */
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #004039; /* Dark teal */
+        }
+        .logo {
+            width: 300px;
+            margin-bottom: 50px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #054f58; /* Teal */
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.postimg.cc/JzVmjmv3/logo.png" alt="EarlyMed Logo" class="logo">
+    <div class="container">
+        <h1>EarlyMed: AI-Powered Breast Cancer Detection</h1>
+        <p>
+            EarlyMed is a Senior Design Project developed by a passionate team of students from <strong>VIT-AP University</strong>. We leverage cutting-edge machine learning to predict breast cancer stages—<strong>benign (non-cancerous)</strong> or <strong>malignant (cancerous)</strong>—based on key cellular features. Our AI model analyzes <i>clump thickness, cell uniformity, mitosis rate, nuclear characteristics</i>, and more to provide highly accurate risk assessments.
+        </p>
+        <p>
+            To use this tool, enter the required values obtained from <strong>cytology reports</strong> or <strong>microscopic cell analysis</strong> conducted by medical professionals. These inputs are derived from <b>Fine Needle Aspiration (FNA) biopsies</b>, a widely used diagnostic test for breast cancer. 
+        </p>
+        <p>
+            Early detection saves lives! Let <b>EarlyMed</b> assist you in making informed medical decisions with instant, AI-driven insights.
+        </p>
+    </div>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="input-box">
+                <label for="clump_thickness">Clump Thickness</label>
+                <input type="number" id="clump_thickness" name="clump_thickness" placeholder="e.g., 5 (1-10)" required>
+                <span class="tooltip" data-definition="Clump Thickness: Measures uniformity of cells." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="uniform_cell_size">Uniform Cell Size</label>
+                <input type="number" id="uniform_cell_size" name="uniform_cell_size" placeholder="e.g., 3 (1-10)" required>
+                <span class="tooltip" data-definition="Uniform Cell Size: Consistency of cell sizes." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="uniform_cell_shape">Uniform Cell Shape</label>
+                <input type="number" id="uniform_cell_shape" name="uniform_cell_shape" placeholder="e.g., 4 (1-10)" required>
+                <span class="tooltip" data-definition="Uniform Cell Shape: Consistency of cell shapes." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="marginal_adhesion">Marginal Adhesion</label>
+                <input type="number" id="marginal_adhesion" name="marginal_adhesion" placeholder="e.g., 2 (1-10)" required>
+                <span class="tooltip" data-definition="Marginal Adhesion: Measures how well cells stick together." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="single_epithelial_size">Single Epithelial Cell Size</label>
+                <input type="number" id="single_epithelial_size" name="single_epithelial_size" placeholder="e.g., 6 (1-10)" required>
+                <span class="tooltip" data-definition="Single Epithelial Cell Size: Size of normal epithelial cells." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="bare_nuclei">Bare Nuclei</label>
+                <input type="number" id="bare_nuclei" name="bare_nuclei" placeholder="e.g., 7 (1-10)" required>
+                <span class="tooltip" data-definition="Bare Nuclei: Presence of bare nuclei in cells." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="bland_chromatin">Bland Chromatin</label>
+                <input type="number" id="bland_chromatin" name="bland_chromatin" placeholder="e.g., 3 (1-10)" required>
+                <span class="tooltip" data-definition="Bland Chromatin: Texture of chromatin in cell nuclei." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="normal_nucleoli">Normal Nucleoli</label>
+                <input type="number" id="normal_nucleoli" name="normal_nucleoli" placeholder="e.g., 2 (1-10)" required>
+                <span class="tooltip" data-definition="Normal Nucleoli: Size and shape of nucleoli." data-range="1-10">?</span>
+            </div>
+            <div class="input-box">
+                <label for="mitoses">Mitoses</label>
+                <input type="number" id="mitoses" name="mitoses" placeholder="e.g., 1 (1-10)" required>
+                <span class="tooltip" data-definition="Mitoses: Number of cell divisions observed." data-range="1-10">?</span>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div class="result">{{ prediction_text }}</div>
+    </div>
+    <div class="footer">
+        <p>Disclaimer: This web application is for educational and informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for any health concerns. It can only be used to get aware of the health before going to the doctor.</p>
+    </div>
+</body>
+</html>
